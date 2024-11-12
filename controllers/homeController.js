@@ -4,4 +4,4 @@ exports.index = (req, res) => {
 
 exports.showSignUp = (req, res) => {
     res.render("signup");
-    };
+};

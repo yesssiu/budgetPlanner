@@ -22,6 +22,10 @@ const express = require("express"),
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
+router.get("/", (req, res) => {
+  res.render("index");
+});
+
 app.use(express.static("public"));
 app.use(layouts);
 app.use(
@@ -30,3 +34,9 @@ app.use(
   })
 );
 app.use(express.json());
+
+app.listen(app.get("port"), () => {
+    console.log(
+    `Server running at http://localhost:${app.get("port")}`
+    );
+    });

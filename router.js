@@ -4,10 +4,18 @@ const httpStatus = require("http-status-codes"),
   contentTypes = require("./contentTypes"),
   utils = require("./utils");
 
+const router = express.Router();
+
 const routes = {
   GET: {},
   POST: {}
 };
+
+router.get('/',)
+router.get('/',)
+router.get('/',)
+
+
 
 exports.handle = (req, res) => {
   try {

@@ -35,23 +35,4 @@ userSchema.virtual("username").get(function () {
     return firstLetter + lastName;
 });
 
-userSchema.pre("save", function (next) {
-    let user = this;
-    if (user.subscribedAccount === undefined) {
-        Subscriber.findOne({
-            email: user.email
-        })
-            .then(subscriber => {
-                user.subscribedAccount = subscriber;
-                next();
-            })
-            .catch(err => {
-                console.log(`Error in connecting subscriber: ${err.message}`);
-                next(error);
-            });
-    } else {
-        next();
-    }
-});
-
 module.exports = mongoose.model("User", userSchema);

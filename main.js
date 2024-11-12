@@ -19,6 +19,8 @@ const express = require("express"),
 //      }
 //   );
 
+// mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/
+
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 

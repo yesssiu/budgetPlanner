@@ -4,6 +4,7 @@ const httpStatus = require("http-status-codes"),
   contentTypes = require("./contentTypes"),
   utils = require("./utils");
 
+const userController = require("./userController");
 const router = express.Router();
 
 const routes = {
@@ -11,9 +12,19 @@ const routes = {
   POST: {}
 };
 
+// Home Route
+router.get('/', (req, res) => {
+  res.render('index', { title: 'Home' });
+});
+
+
+
 router.get('/',)
-router.get('/',)
-router.get('/',)
+
+
+// Update user information 
+router.get('/:id/update', userController.update)
+
 
 
 

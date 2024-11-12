@@ -19,6 +19,27 @@ const express = require("express"),
 //      }
 //   );
 
+async function connectToAtlas() {
+  const uri = 'mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/'
+
+  try {
+      await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+      console.log('Connected to MongoDB Atlas');
+  } catch (error) {
+      console.error('Error connecting to MongoDB Atlas', error);
+  } 
+}
+
+connectToAtlas()
+  .then(() => {
+      app.listen(port, () => {
+          console.log(`Server is running on port ${port}`);
+      });
+  })
+  .catch((error) => {
+      console.error('Failed to start the server due to MongoDB connection issues:', error);
+  });
+
 // mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/
 
 app.set("port", process.env.PORT || 3000);

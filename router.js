@@ -4,8 +4,10 @@ const httpStatus = require("http-status-codes"),
   contentTypes = require("./contentTypes"),
   utils = require("./utils");
 
-const userController = require("./userController");
+
+const express = require("express");
 const router = express.Router();
+const userController = require("./userController");
 
 const routes = {
   GET: {},
@@ -20,6 +22,9 @@ router.get('/', (req, res) => {
 
 
 router.get('/',)
+
+//Login routes
+router.get('/login', userController.login)
 
 
 // Update user information 

@@ -33,13 +33,17 @@ module.exports = {
         };
         User.create(userParams)
             .then(user => {
+                //flash messages for success and error
+                req.flash('success', `Account created successfully!`);
                 res.locals.redirect = '/users';
                 res.locals.user = user;
                 next();
             })
             .catch(err => {
                 console.log(`Error saving user: ${err.message}`);
-                next(err);
+                res.locals.redirect = '/users/new';
+                req.flash("error", "Failed to create user account: ${error.message}");
+                next();
             });
     },
 
@@ -119,6 +123,32 @@ module.exports = {
             })
             .catch(err => {
                 console.log(`Error deleting user by ID: ${err.message}`);
+                next(err);
+            });
+    },
+
+    login: (req, res) => {
+        res.render("users/login");
+        },
+
+    authenticate: (req, res, next) => {
+        User.findOne({
+            email: req.body.email
+        })
+            .then(user => {
+                if (user && user.password === req.body.password) {
+                    res.locals.redirect = `/users/${user._id}`;
+                    req.flash('success', `${user.fullName}'s logged in successfully!`);
+                    res.locals.user = user;
+                    next();
+                } else {
+                    req.flash('error', 'Username or password is incorrect. Please try again or contact your system administrator!');
+                    res.locals.redirect = '/users/login';
+                    next();
+                }
+            })
+            .catch(err => {
+                console.log(`Error logging in user: ${err.message}`);
                 next(err);
             });
     }

@@ -10,7 +10,12 @@ const port = 3000,
 const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
-  mongoose = require("mongoose")
+  mongoose = require("mongoose"),
+  expressSession = require("express-session"),
+  cookieParser = require("cookie-parser"),
+  connectFlash = require("connect-flash");
+
+  
 
 //   mongoose.connect(
 //     "mongodb://localhost:27017/recipe_db", DATABASE YHTEYS TÄHÄN
@@ -57,6 +62,21 @@ app.use(
   })
 );
 app.use(express.json());
+
+
+//Flash messaging
+app.use(cookieParser("_passcode"));
+app.use(expressSession({
+  secret: "secret_passcode",
+  cookie: {
+    maxAge: 4000000
+  },
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(connectFlash());
+
+app.use(router);
 
 app.listen(app.get("port"), () => {
     console.log(

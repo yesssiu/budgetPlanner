@@ -13,7 +13,10 @@ const express = require("express"),
   mongoose = require("mongoose"),
   expressSession = require("express-session"),
   cookieParser = require("cookie-parser"),
-  connectFlash = require("connect-flash");
+  connectFlash = require("connect-flash"),
+  { body, validationResult} = require("express-validator"),
+  passport = require("passport");
+
 
   
 
@@ -64,6 +67,7 @@ app.use(
 app.use(express.json());
 
 
+
 //Flash messaging
 app.use(cookieParser("_passcode"));
 app.use(expressSession({
@@ -75,6 +79,22 @@ app.use(expressSession({
   saveUninitialized: false
 }));
 app.use(connectFlash());
+
+//Passport initialization
+app.use(passport.initialize());
+app.use(passport.session());
+
+const User = require("./models/user");
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Middleware to set current logged in status and current user
+app.use((req, res, next) => {
+  res.locals.loggedIn = req.isAuthenticated();
+  res.locals.currentUser = req.user;
+  next();
+});
 
 app.use(router);
 

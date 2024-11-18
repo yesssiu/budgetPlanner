@@ -25,6 +25,15 @@ router.get('/',)
 
 //Login routes
 router.get('/login', userController.login)
+router.post('/login', userController.authenticate)
+
+//Logout route
+router.get("/users/logout", userController.logout, userController.redirect-
+  View)
+
+//Signup routes
+router.get('/signup', userController.signup)
+router.post('/signup', userController.validate, userController.create, userController.redirectView)
 
 
 // Update user information 

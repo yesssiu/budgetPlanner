@@ -14,5 +14,15 @@
     <a href="/help">
       <span class="button">Help</span>
     </a>
+
+    <!-- Login status on navbar -->
+    <% if (loggedIn) { %> Logged in as
+    <a href="<%=`/users/${currentUser._id}`%>">
+      ➥ <%= currentUser.fullName %></a
+    >
+    <%} else {%>
+    <a href="/users/login">Log In</a>
+    <% } %> <% if (loggedIn) { %> <a href="/users/logout">Log Out</a> <% } else
+    { %> <a href="/users/signup">Sign Up</a> <% } %>
   </div>
 </div>

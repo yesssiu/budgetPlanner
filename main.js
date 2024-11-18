@@ -1,11 +1,7 @@
 "use strict";
 
-const port = 3000,
-  http = require("http"),
-  httpStatus = require("http-status-codes"),
-  router = require("./router"),
-  contentTypes = require("./contentTypes"),
-  utils = require("./utils");
+// Constant URI for the DB connection
+const DB_URI = 'mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/';
 
 const express = require("express"),
   app = express(),
@@ -15,35 +11,13 @@ const express = require("express"),
   cookieParser = require("cookie-parser"),
   connectFlash = require("connect-flash"),
   { body, validationResult } = require("express-validator"),
-  passport = require("passport");
-
-async function connectToAtlas() {
-  const uri = 'mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/'
-
-  try {
-      await mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-      console.log('Connected to MongoDB Atlas');
-  } catch (error) {
-      console.error('Error connecting to MongoDB Atlas', error);
-  } 
-}
-
-connectToAtlas()
-  .then(() => {
-      app.listen(port, () => {
-          console.log(`Server is running on port ${port}`);
-      });
-  })
-  .catch((error) => {
-      console.error('Failed to start the server due to MongoDB connection issues:', error);
-  });
+  passport = require("passport"),
+  router = require("./router");
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
-app.get("/", (req, res) => {
-  res.render("index");
-});
+app.get("/", (_, res) => res.render("index"));
 
 app.use(express.static("public"));
 app.use(layouts);
@@ -84,8 +58,18 @@ app.use((req, res, next) => {
 
 app.use(router);
 
-app.listen(app.get("port"), () => {
-    console.log(
-    `Server running at http://localhost:${app.get("port")}`
-    );
-});
+async function runServer() {
+  try {
+      await mongoose.connect(DB_URI);
+      const db = mongoose.connection;
+      db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
+      const port = app.get("port");
+      app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+    
+  } finally {
+    console.log("Done.");
+  }
+}
+
+// Start the server
+runServer().catch(console.dir);

@@ -14,18 +14,8 @@ const express = require("express"),
   expressSession = require("express-session"),
   cookieParser = require("cookie-parser"),
   connectFlash = require("connect-flash"),
-  { body, validationResult} = require("express-validator"),
+  { body, validationResult } = require("express-validator"),
   passport = require("passport");
-
-
-  
-
-//   mongoose.connect(
-//     "mongodb://localhost:27017/recipe_db", DATABASE YHTEYS TÄHÄN
-//     { useNewUrlParser: true,
-//       useUnifiedTopology: true
-//      }
-//   );
 
 async function connectToAtlas() {
   const uri = 'mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/'
@@ -48,12 +38,10 @@ connectToAtlas()
       console.error('Failed to start the server due to MongoDB connection issues:', error);
   });
 
-// mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/
-
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
 
-router.get("/", (req, res) => {
+app.get("/", (req, res) => {
   res.render("index");
 });
 
@@ -66,9 +54,7 @@ app.use(
 );
 app.use(express.json());
 
-
-
-//Flash messaging
+// Flash messaging
 app.use(cookieParser("_passcode"));
 app.use(expressSession({
   secret: "secret_passcode",
@@ -80,7 +66,7 @@ app.use(expressSession({
 }));
 app.use(connectFlash());
 
-//Passport initialization
+// Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -102,4 +88,4 @@ app.listen(app.get("port"), () => {
     console.log(
     `Server running at http://localhost:${app.get("port")}`
     );
-    });
+});

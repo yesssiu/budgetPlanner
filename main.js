@@ -11,13 +11,10 @@ const express = require("express"),
   cookieParser = require("cookie-parser"),
   connectFlash = require("connect-flash"),
   { body, validationResult } = require("express-validator"),
-  passport = require("passport"),
-  router = require("./router");
+  passport = require("passport");
 
 app.set("port", process.env.PORT || 3000);
 app.set("view engine", "ejs");
-
-app.get("/", (_, res) => res.render("index"));
 
 app.use(express.static("public"));
 app.use(layouts);
@@ -56,7 +53,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(router);
+const router = require("./router");
+app.use('/', router);
 
 async function runServer() {
   try {

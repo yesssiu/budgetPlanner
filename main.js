@@ -53,7 +53,7 @@ app.use((req, res, next) => {
   next();
 });
 
-const router = require("./router");
+const router = require("./routes/router");
 app.use('/', router);
 
 async function runServer() {

@@ -11,8 +11,10 @@ const express = require("express"),
   cookieParser = require("cookie-parser"),
   connectFlash = require("connect-flash"),
   { body, validationResult } = require("express-validator"),
-  passport = require("passport");
+  passport = require("passport"),
   path = require("path");
+  router = require("./routes/router");
+
 
 app.set("port", process.env.PORT || 4000);
 

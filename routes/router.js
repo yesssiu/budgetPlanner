@@ -29,7 +29,7 @@ router.get('/:id/update', userController.update);
 
 // FAQ route
 router.get('/faq', (req, res) => {
-    res.render('user/faq', { title: 'FAQ & Chat' });
+    res.render('help', { title: 'FAQ & Chat' });
 });
 
 module.exports = router;

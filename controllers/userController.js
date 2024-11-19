@@ -22,7 +22,7 @@ module.exports = {
     },
 
     signup: (req, res) => {
-        res.render("user/signup");
+        res.render("user/signup", { title: 'Sign up' });
     },
 
     validate: [

@@ -13,7 +13,7 @@ const express = require("express"),
   { body, validationResult } = require("express-validator"),
   passport = require("passport");
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 app.set("view engine", "ejs");
 
 app.use(express.static("public"));
@@ -26,6 +26,7 @@ app.use(
 app.use(express.json());
 
 // Flash messaging
+
 app.use(cookieParser("_passcode"));
 app.use(expressSession({
   secret: "secret_passcode",
@@ -36,6 +37,10 @@ app.use(expressSession({
   saveUninitialized: false
 }));
 app.use(connectFlash());
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+}); 
 
 // Passport initialization
 app.use(passport.initialize());
@@ -61,13 +66,13 @@ async function runServer() {
       await mongoose.connect(DB_URI);
       const db = mongoose.connection;
       db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
-      const port = app.get("port");
-      app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
-    
-  } finally {
-    console.log("Done.");
+  } catch (err) {
+    console.log("Filed to connect MongoDB.");
   }
+
+  const port = app.get("port");
+  app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
 }
 
 // Start the server
-runServer().catch(console.dir);
+runServer();

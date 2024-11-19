@@ -10,6 +10,16 @@ router.get("/", (req, res) => {
   res.send("Index renderöitiin");
 });
 
+// Error Page Route
+router.get("/error", (req, res) => { 
+  res.render("error", { title: 'Error' });
+})
+
+// Help Page Route 
+router.get("/help", (req, res) => { 
+  res.render("help", { title: 'Help' });
+})
+
 // Login routes
 router.get("/login", userController.login);
 router.post("/login", userController.authenticate);

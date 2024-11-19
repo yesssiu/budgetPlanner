@@ -11,14 +11,20 @@ router.get("/", (req, res) => {
 });
 
 // Error Page Route
-router.get("/error", (req, res) => { 
+router.get("/error", (req, res) => {
   res.render("error", { title: 'Error' });
-})
+});
 
 // Help Page Route 
-router.get("/help", (req, res) => { 
+router.get("/help", (req, res) => {
   res.render("help", { title: 'Help' });
-})
+});
+
+// Overview Page Route 
+router.get("/overview", (req, res) => {
+  res.render("overview", { title: 'Overview' });
+});
+
 
 // Login routes
 router.get("/login", userController.login);

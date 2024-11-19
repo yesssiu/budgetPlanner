@@ -12,6 +12,7 @@ const express = require("express"),
   connectFlash = require("connect-flash"),
   { body, validationResult } = require("express-validator"),
   passport = require("passport");
+  path = require("path");
 
 app.set("port", process.env.PORT || 4000);
 
@@ -19,7 +20,8 @@ app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.set("layout", "layout");
 
-app.use(express.static("public"));
+// Middleware setup
+app.use(express.static(path.join(__dirname, "public")));
 app.use(layouts);
 app.use(
   express.urlencoded({

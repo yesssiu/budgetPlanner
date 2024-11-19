@@ -68,18 +68,27 @@ app.use((req, res, next) => {
 
 app.use('/', router);
 
+// async function runServer() {
+//   try {
+//       await mongoose.connect(DB_URI);
+//       const db = mongoose.connection;
+//       db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
+//   } catch (err) {
+//     console.log("Filed to connect MongoDB.");
+//   }
+
+//   const port = app.get("port");
+//   app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+// }
 async function runServer() {
   try {
-      await mongoose.connect(DB_URI);
-      const db = mongoose.connection;
-      db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
+      const port = app.get("port");
+      app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
   } catch (err) {
-    console.log("Filed to connect MongoDB.");
+    console.error("Failed to start the server:", err);
   }
-
-  const port = app.get("port");
-  app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
 }
+
 
 // Start the server
 runServer();

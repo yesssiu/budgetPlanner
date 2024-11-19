@@ -7,6 +7,7 @@ const userController = require("../controllers/userController");
 // Home Route
 router.get("/", (req, res) => {
   res.render("index", { title: 'Home' });
+  res.send("Index renderöitiin");
 });
 
 // Login routes

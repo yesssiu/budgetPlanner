@@ -4,7 +4,7 @@ const { body, validationResult } = require("express-validator");
 
 module.exports = {
     login: (req, res) => {
-        res.render("users/login");
+        res.render("user/login");
     },
 
     authenticate: passport.authenticate("local", {
@@ -22,7 +22,7 @@ module.exports = {
     },
 
     signup: (req, res) => {
-        res.render("users/signup");
+        res.render("user/signup");
     },
 
     validate: [
@@ -55,11 +55,11 @@ module.exports = {
         User.register(newUser, req.body.password, (e, user) => {
             if (user) {
                 req.flash("success", `${user.fullName}'s account created successfully!`);
-                res.locals.redirect = "/users";
+                res.locals.redirect = "/user";
                 next();
             } else {
                 req.flash("error", `Failed to create user account because: ${e.message}.`);
-                res.locals.redirect = "/users/new";
+                res.locals.redirect = "/user/new";
                 next();
             }
         });
@@ -87,7 +87,7 @@ module.exports = {
             $set: userParams
         })
             .then(user => {
-                res.locals.redirect = `/users/${userId}`;
+                res.locals.redirect = `/user/${userId}`;
                 res.locals.user = user;
                 next();
             })

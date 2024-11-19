@@ -17,12 +17,10 @@
 
     <!-- Login status on navbar -->
     <% if (loggedIn) { %> Logged in as
-    <a href="<%=`/users/${currentUser._id}`%>">
-      ➥ <%= currentUser.fullName %></a
-    >
+    <a href="<%=`/user/${currentUser._id}`%>"> ➥ <%= currentUser.fullName %></a>
     <%} else {%>
-    <a href="/users/login">Log In</a>
-    <% } %> <% if (loggedIn) { %> <a href="/users/logout">Log Out</a> <% } else
-    { %> <a href="/users/signup">Sign Up</a> <% } %>
+    <a href="/user/login">Log In</a>
+    <% } %> <% if (loggedIn) { %> <a href="/user/logout">Log Out</a> <% } else {
+    %> <a href="/user/signup">Sign Up</a> <% } %>
   </div>
 </div>

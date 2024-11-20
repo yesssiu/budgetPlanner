@@ -1,10 +1,39 @@
-<link rel="stylesheet" href="/css/style.css" />
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
+
+    <nav>
+      <div class="navbar-title">
+        <h1 id="title">BudgetBuddy</h1>
+      </div>
+      <div class="navbar-items">
+        <a href="/">
+          <span class="button">Home</span>
+        </a>
+        <a href="/overview">
+          <span class="button">Overview</span>
+        </a>
+        <a href="/help">
+          <span class="button">Help</span>
+        </a>
+      </div>
+    </nav>
+  </head>
+
+  <body>
+    <!-- Flash messages -->
+    <div class="flashes">
+      <% if (flashMessages) { %> <% if (flashMessages.success) { %>
+      <div class="flash success"><%= flashMessages.success %></div>
+      <% } else if (flashMessages.error) { %>
+      <div class="flash error"><%= flashMessages.error %></div>
+      <% } %> <% } %>
+    </div>
+    <%- body %>
+  </body>
+</html>
 
 <!-- Flash messages -->
-<div class="flashes">
-  <% if (flashMessages) { %> <% if (flashMessages.success) { %>
-  <div class="flash success"><%= flashMessages.success %></div>
-  <% } else if (flashMessages.error) { %>
-  <div class="flash error"><%= flashMessages.error %></div>
-  <% } %> <% } %>
-</div>

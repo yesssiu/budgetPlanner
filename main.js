@@ -11,12 +11,20 @@ const express = require("express"),
   cookieParser = require("cookie-parser"),
   connectFlash = require("connect-flash"),
   { body, validationResult } = require("express-validator"),
-  passport = require("passport");
+  passport = require("passport"),
+  path = require("path"),
+  router = require("./routes/router");
 
-app.set("port", process.env.PORT || 3000);
+
+
+app.set("port", process.env.PORT || 4000);
+
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+app.set("layout", "layout");
 
-app.use(express.static("public"));
+// Middleware setup
+app.use(express.static(path.join(__dirname, "public")));
 app.use(layouts);
 app.use(
   express.urlencoded({
@@ -26,6 +34,7 @@ app.use(
 app.use(express.json());
 
 // Flash messaging
+
 app.use(cookieParser("_passcode"));
 app.use(expressSession({
   secret: "secret_passcode",
@@ -36,6 +45,10 @@ app.use(expressSession({
   saveUninitialized: false
 }));
 app.use(connectFlash());
+app.use((req, res, next) => {
+  res.locals.flashMessages = req.flash();
+  next();
+}); 
 
 // Passport initialization
 app.use(passport.initialize());
@@ -53,21 +66,29 @@ app.use((req, res, next) => {
   next();
 });
 
-const router = require("./routes/router");
 app.use('/', router);
 
+// async function runServer() {
+//   try {
+//       await mongoose.connect(DB_URI);
+//       const db = mongoose.connection;
+//       db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
+//   } catch (err) {
+//     console.log("Filed to connect MongoDB.");
+//   }
+
+//   const port = app.get("port");
+//   app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+// }
 async function runServer() {
   try {
-      await mongoose.connect(DB_URI);
-      const db = mongoose.connection;
-      db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
       const port = app.get("port");
       app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
-    
-  } finally {
-    console.log("Done.");
+  } catch (err) {
+    console.error("Failed to start the server:", err);
   }
 }
 
+
 // Start the server
-runServer().catch(console.dir);
+runServer();

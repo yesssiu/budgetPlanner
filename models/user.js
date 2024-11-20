@@ -38,13 +38,13 @@ userSchema.pre("save", function(next) {
     next();
     })
     .catch(error => {
-    console.log(`Error in hashing password: ${error.message}`);
-    next(error);
+        console.log(`Error in hashing password: ${error.message}`);
+        next(error);
     });
     });
     userSchema.methods.passwordComparison = function(inputPassword){
-    let user = this;
-    return bcrypt.compare(inputPassword, user.password);
+        let user = this;
+        return bcrypt.compare(inputPassword, user.password);
     };
 
 userSchema.virtual("fullName").get(function () {

@@ -16,7 +16,7 @@ const getItemParams = body => {
 module.exports = {
     // New budget item
     new: (req, res, next) => {
-        res.render("budget/new");
+        res.render("budget/newExpense");
     },
 
     create: (req, res, next) => {
@@ -34,7 +34,7 @@ module.exports = {
             .catch(error => {
                 console.log(`Error saving item: ${error.message}`);
                 req.flash("error", `Failed to create budget item: ${error.message}`);
-                res.locals.redirect = "/budget/new";
+                res.locals.redirect = "/expense/new";
                 next();
             });
     },

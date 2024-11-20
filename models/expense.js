@@ -1,8 +1,7 @@
 const user = require("./user");
-
 const mongoose = require("mongoose"),
 
-budgetItemSchema = new mongoose.Schema({
+expenseItemSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true
@@ -31,17 +30,6 @@ budgetItemSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
-
-    income: {
-        type: Boolean,
-        required: true
-    },
-
-    expense: {
-        type: Boolean,
-        required: true
-    }
-
 });
 
 // // Custom validation to ensure either income or expense is true, but not both
@@ -53,4 +41,4 @@ budgetItemSchema = new mongoose.Schema({
 //     }
 // });
 
-module.exports = mongoose.model('BudgetItem', budgetItemSchema);
+module.exports = mongoose.model('expenseItem', expenseItemSchema);

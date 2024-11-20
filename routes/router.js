@@ -3,6 +3,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
+const expenseController = require("../controllers/expenseController");
 
 // Home Route
 router.get("/", (req, res) => {
@@ -38,6 +39,14 @@ router.post("/signup", userController.validate, userController.create, userContr
 
 // Update user information 
 router.get("/:id/update", userController.update);
+
+//Add expense routes
+router.get("/expense/new", expenseController.new)
+router.post("/expense/new", expenseController.create, expenseController.redirectView);
+
+//Edit expense routes
+router.get("/expense/:id/edit", expenseController.edit);
+router.put("/expense/:id/update", expenseController.update, expenseController.redirectView);
 
 module.exports = router;
 

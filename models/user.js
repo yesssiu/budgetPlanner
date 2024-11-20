@@ -58,7 +58,7 @@ userSchema.virtual("username").get(function () {
 });
 
 userSchema.plugin(passportLocalMongoose, {
-    usernameField: "username"
+    usernameField: "email"
     });
 
 

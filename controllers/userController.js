@@ -2,17 +2,46 @@ const User = require('../models/user');
 const passport = require("passport");
 const { body, validationResult } = require("express-validator");
 
+const getUserParams = body => {
+    return {
+        name: {
+            first: body.first_name,
+            last: body.last_name
+        },
+        email: body.email,
+        password: body.password
+    };
+};
+
 module.exports = {
     login: (req, res) => {
-        res.render("users/login");
+        res.render("user/login");
     },
 
-    authenticate: passport.authenticate("local", {
-        failureRedirect: "/login",
-        failureFlash: "Failed to login.",
-        successRedirect: "/",
-        successFlash: "Logged in!"
-    }),
+    authenticate: (req, res, next) => {
+        passport.authenticate("local", (err, user, info) => {
+            if (err) {
+                console.log(`Login error: ${err.message}`);
+                req.flash("error", "Failed to login.");
+                return res.redirect("/login");
+            }
+            if (!user) {
+                console.log("Login failed: No user found.");
+                req.flash("error", "Failed to login.");
+                return res.redirect("/login");
+            }
+            req.logIn(user, err => {
+                if (err) {
+                    console.log(`Login error: ${err.message}`);
+                    req.flash("error", "Failed to login.");
+                    return res.redirect("/login");
+                }
+                console.log(`Login successful: ${user.email}`);
+                req.flash("success", "Logged in!");
+                return res.redirect("/");
+            });
+        })(req, res, next);
+    },
 
     logout: (req, res, next) => {
         req.logout();
@@ -22,7 +51,7 @@ module.exports = {
     },
 
     signup: (req, res) => {
-        res.render("users/signup");
+        res.render("user/signup");
     },
 
     validate: [
@@ -55,11 +84,12 @@ module.exports = {
         User.register(newUser, req.body.password, (e, user) => {
             if (user) {
                 req.flash("success", `${user.fullName}'s account created successfully!`);
-                res.locals.redirect = "/users";
+                res.locals.redirect = "/overview";
                 next();
             } else {
                 req.flash("error", `Failed to create user account because: ${e.message}.`);
-                res.locals.redirect = "/users/new";
+                console.log(`Failed to create user account because: ${e.message}.`);
+                res.locals.redirect = "/signup";
                 next();
             }
         });
@@ -87,7 +117,7 @@ module.exports = {
             $set: userParams
         })
             .then(user => {
-                res.locals.redirect = `/users/${userId}`;
+                res.locals.redirect = `/user/${userId}`;
                 res.locals.user = user;
                 next();
             })

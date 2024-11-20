@@ -1,8 +1,5 @@
 "use strict";
 
-// Constant URI for the DB connection
-const DB_URI = 'mongodb+srv://admin:admin@budgetbuddy.m3y54.mongodb.net/';
-
 const express = require("express"),
   app = express(),
   layouts = require("express-ejs-layouts"),
@@ -15,9 +12,6 @@ const express = require("express"),
   path = require("path"),
   router = require("./routes/router");
 
-
-
-app.set("port", process.env.PORT || 4000);
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -33,8 +27,7 @@ app.use(
 );
 app.use(express.json());
 
-// Flash messaging
-
+// Cookies & Flash messaging
 app.use(cookieParser("_passcode"));
 app.use(expressSession({
   secret: "secret_passcode",
@@ -68,27 +61,28 @@ app.use((req, res, next) => {
 
 app.use('/', router);
 
-// async function runServer() {
-//   try {
-//       await mongoose.connect(DB_URI);
-//       const db = mongoose.connection;
-//       db.once("open", () => console.log("Successfully connected to MongoDB using Mongoose!"));
-//   } catch (err) {
-//     console.log("Filed to connect MongoDB.");
-//   }
+const port = process.env.PORT || 4000;
 
-//   const port = app.get("port");
-//   app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
-// }
-async function runServer() {
+// DB Connection & dotenv configuration
+require('dotenv').config();
+
+async function connectToAtlas() {
+  const uri = process.env.MONGO_URI;
+
   try {
-      const port = app.get("port");
-      app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
-  } catch (err) {
-    console.error("Failed to start the server:", err);
-  }
+      await mongoose.connect(uri);
+      console.log('Connected to MongoDB Atlas');
+  } catch (error) {
+      console.error('Error connecting to MongoDB Atlas', error);
+  } 
 }
 
-
-// Start the server
-runServer();
+connectToAtlas()
+  .then(() => {
+      app.listen(port, () => {
+          console.log(`Server is running on port ${port}`);
+      });
+  })
+  .catch((error) => {
+      console.error('Failed to start the server due to MongoDB connection issues:', error);
+  });

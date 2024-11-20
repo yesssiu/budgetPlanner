@@ -21,6 +21,7 @@ module.exports = {
 
     create: (req, res, next) => {
         let itemParams = getItemParams(req.body);
+        itemParams.user = req.user._id;
 
         ExpenseItem.create(itemParams)
             .then(item => {

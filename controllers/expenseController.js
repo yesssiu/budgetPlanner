@@ -1,4 +1,4 @@
-const BudgetItem = require('../models/expense');
+const ExpenseItem = require('../models/expense');
 
 const getItemParams = body => {
     return {
@@ -22,7 +22,7 @@ module.exports = {
     create: (req, res, next) => {
         let itemParams = getItemParams(req.body);
 
-        BudgetItem.create(itemParams)
+        ExpenseItem.create(itemParams)
             .then(item => {
                 console.log(`Budget item created successfully: ${item}`);
                 req.flash("success", "Budget item created!");
@@ -41,7 +41,7 @@ module.exports = {
     // Editing budget item
     edit: (req, res, next) => {
         let itemId = req.params.id;
-        BudgetItem.findById(itemId)
+        ExpenseItem.findById(itemId)
             .then(item => {
                 res.render("budget/edit", {
                     item: item
@@ -57,7 +57,7 @@ module.exports = {
         let itemId = req.params.id,
             itemParams = getItemParams(req.body);
 
-        BudgetItem.findByIdAndUpdate(itemId, { $set: itemParams })
+        ExpenseItem.findByIdAndUpdate(itemId, { $set: itemParams })
             .then(item => {
                 res.locals.item = item;
                 res.locals.redirect = "/overview";
@@ -71,7 +71,7 @@ module.exports = {
 
     delete: (req, res, next) => {
         let itemId = req.params.id;
-        BudgetItem.findByIdAndRemove(itemId)
+        ExpenseItem.findByIdAndRemove(itemId)
             .then(() => {
                 res.locals.redirect = "/overview";
                 next();

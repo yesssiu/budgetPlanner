@@ -110,8 +110,6 @@ module.exports = {
             },
             email: req.body.email,
             password: req.body.password,
-            phoneNumber: req.body.phoneNumber,
-            zipCode: req.body.zipCode
         };
         User.findByIdAndUpdate(userId, {
             $set: userParams

@@ -65,7 +65,7 @@ router.get('/add', (req, res) => {
 });
 
 //Add & Edit expense routes
-router.get("/expense/new", expenseController.new)
+router.get("/expense/new", expenseController.new);
 router.post("/expense/new", expenseController.create, expenseController.redirectView);
 router.get("/expense/:id/edit", expenseController.edit);
 router.put("/expense/:id/update", expenseController.update, expenseController.redirectView);

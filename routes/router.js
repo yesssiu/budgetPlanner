@@ -36,7 +36,7 @@ router.get("/help", (req, res) => {
 });
 
 // Overview Page Route 
-router.get("/overview", checkLoginStatus, incomeController.overview, (req, res) => {
+router.get("/overview", checkLoginStatus, incomeController.overview, expenseController.overview, (req, res) => {
   res.render("overview", { title: 'Overview' });
 });
 

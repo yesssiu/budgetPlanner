@@ -14,6 +14,17 @@ const getItemParams = body => {
 };
 
 module.exports = {
+    overview: (req, res, next ) => {
+        ExpenseItem.find()
+        .then(expenseItems => {
+            res.locals.expenseItems = expenseItems;
+            next();
+        })
+        .catch(error => {
+            console.log(`Error fetching income items: ${error.message}`);
+            next(error);
+        });
+    },
     // New budget item
     new: (req, res, next) => {
         res.render("budget/newExpense");

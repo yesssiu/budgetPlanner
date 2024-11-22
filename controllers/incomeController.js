@@ -1,4 +1,4 @@
-const ExpenseItem = require('../models/expense');
+const IncomeItem = require('../models/income');
 
 const getItemParams = body => {
     return {
@@ -15,9 +15,9 @@ const getItemParams = body => {
 
 module.exports = {
     overview: (req, res, next ) => {
-        ExpenseItem.find()
-        .then(expenseItems => {
-            res.locals.expenseItems = expenseItems;
+        IncomeItem.find()
+        .then(incomeItems => {
+            res.locals.incomeItems = incomeItems;
             next();
         })
         .catch(error => {
@@ -27,14 +27,14 @@ module.exports = {
     },
     // New budget item
     new: (req, res, next) => {
-        res.render("budget/newExpense");
+        res.render("budget/newIncome");
     },
 
     create: (req, res, next) => {
         let itemParams = getItemParams(req.body);
         itemParams.user = req.user._id;
 
-        ExpenseItem.create(itemParams)
+        IncomeItem.create(itemParams)
             .then(item => {
                 console.log(`Budget item created successfully: ${item}`);
                 req.flash("success", "Budget item created!");
@@ -45,7 +45,7 @@ module.exports = {
             .catch(error => {
                 console.log(`Error saving item: ${error.message}`);
                 req.flash("error", `Failed to create budget item: ${error.message}`);
-                res.locals.redirect = "/expense/new";
+                res.locals.redirect = "/income/new";
                 next();
             });
     },
@@ -53,7 +53,7 @@ module.exports = {
     // Editing budget item
     edit: (req, res, next) => {
         let itemId = req.params.id;
-        ExpenseItem.findById(itemId)
+        IncomeItem.findById(itemId)
             .then(item => {
                 res.render("budget/edit", {
                     item: item
@@ -69,7 +69,7 @@ module.exports = {
         let itemId = req.params.id,
             itemParams = getItemParams(req.body);
 
-        ExpenseItem.findByIdAndUpdate(itemId, { $set: itemParams })
+            IncomeItem.findByIdAndUpdate(itemId, { $set: itemParams })
             .then(item => {
                 res.locals.item = item;
                 res.locals.redirect = "/overview";
@@ -83,7 +83,7 @@ module.exports = {
 
     delete: (req, res, next) => {
         let itemId = req.params.id;
-        ExpenseItem.findByIdAndRemove(itemId)
+        IncomeItem.findByIdAndRemove(itemId)
             .then(() => {
                 res.locals.redirect = "/overview";
                 next();

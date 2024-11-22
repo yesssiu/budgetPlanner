@@ -1,56 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Overview</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Overview</h1>
 
-    <h2>Users Table</h2>
+    <h2>Expense Items</h2>
     <table class="table">
-    <thead>
+      <thead>
         <tr>
-        <th>Title</th>
-        <th>Amount</th>
-        <th>Category</th>
-        <th>Description</th>
-        <th>Date</th>
-        <th>Income</th>
-        <th>Expense</th>
+          <th>Title</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Date</th>
         </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
+        <% expenseItems.forEach(expenseItem => { %>
         <tr>
-        <td>
-            <p>xxxx</p>
-        </td>
-        <td>
-            <p>xxxx</p>
-        </td>
-        <td>
-            <p>xxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            xxxx
-        </td>      
+          <td><%= expenseItem.title %></td>
+          <td><%= expenseItem.amount %></td>
+          <td><%= expenseItem.category %></td>
+          <td><%= expenseItem.description %></td>
+          <td><%= expenseItem.date %></td>
+          <td>
+            <p>Edit</p>
+          </td>
         </tr>
-    </tbody>
+        <% }); %>
+      </tbody>
     </table>
 
-
-</body>
+    <h2>Income Items</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% incomeItems.forEach(incomeItem => { %>
+        <tr>
+          <td><%= incomeItem.title %></td>
+          <td><%= incomeItem.amount %></td>
+          <td><%= incomeItem.category %></td>
+          <td><%= incomeItem.description %></td>
+          <td><%= incomeItem.date %></td>
+          <td>
+            <p>Edit</p>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </body>
 </html>

@@ -40,7 +40,6 @@ router.get("/overview", checkLoginStatus, incomeController.overview, expenseCont
   res.render("overview", { title: 'Overview' });
 });
 
-
 // Login routes
 router.get("/login", userController.login);
 router.post("/login", userController.authenticate);
@@ -64,18 +63,6 @@ router.get('/faq', (req, res) => {
 router.get('/add', (req, res) => {
   res.render('budget/new', { title: 'Add Income & Expenses' });
 });
-
-//Add & Edit expense routes
-router.get("/expense/new", expenseController.new)
-router.post("/expense/new", expenseController.create, expenseController.redirectView);
-router.get("/expense/:id/edit", expenseController.edit);
-router.put("/expense/:id/update", expenseController.update, expenseController.redirectView);
-
-//Add & Edit income routes
-router.get("/income/new", incomeController.new)
-router.post("/income/new", incomeController.create, incomeController.redirectView);
-router.get("/income/:id/edit", incomeController.edit);
-router.put("/income/:id/update", incomeController.update, incomeController.redirectView);
 
 //Add & Edit expense routes
 router.get("/expense/new", expenseController.new)

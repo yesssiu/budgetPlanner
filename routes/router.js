@@ -31,7 +31,7 @@ router.get("/login", userController.login);
 router.post("/login", userController.authenticate);
 
 // Logout route
-router.get("/user/logout", userController.logout, userController.redirectView);
+router.get("/logout", userController.logout, userController.redirectView);
 
 // Signup routes
 router.get("/signup", userController.signup);

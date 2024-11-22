@@ -44,10 +44,16 @@ module.exports = {
     },
 
     logout: (req, res, next) => {
-        req.logout();
-        req.flash("success", "You have been logged out!");
-        res.locals.redirect = "/";
-        next();
+        req.logout(err => {
+            if(err) {
+                console.log(`Error logging out: ${err.message}`);
+                req.flash("error", "Failed to log out.");
+                return next(err);
+            }
+            req.flash("success", "You have been logged out!");
+            res.locals.redirect = "/";
+            next();
+        });
     },
 
     signup: (req, res) => {

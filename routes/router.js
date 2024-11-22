@@ -5,6 +5,20 @@ const router = express.Router();
 const userController = require("../controllers/userController");
 const expenseController = require("../controllers/expenseController");
 
+//Middleware to check if user is logged in (for accessing certain pages)
+const checkLoginStatus = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.locals.user = req.user;
+    next();
+  }
+  req.flash("error", "You must be logged in to access this page.");
+  res.redirect("/");
+};
+
+module.exports = {
+  checkLoginStatus
+};
+
 // Home Route
 router.get("/", (req, res) => {
   res.render("index", { title: 'Home' });
@@ -21,7 +35,7 @@ router.get("/help", (req, res) => {
 });
 
 // Overview Page Route 
-router.get("/overview", (req, res) => {
+router.get("/overview", checkLoginStatus, (req, res) => {
   res.render("overview", { title: 'Overview' });
 });
 
@@ -41,12 +55,12 @@ router.post("/signup", userController.validate, userController.create, userContr
 router.get("/:id/update", userController.update);
 
 //Add expense routes
-router.get("/expense/new", expenseController.new)
-router.post("/expense/new", expenseController.create, expenseController.redirectView);
+router.get("/expense/new", checkLoginStatus, expenseController.new)
+router.post("/expense/new", checkLoginStatus, expenseController.create, expenseController.redirectView);
 
 //Edit expense routes
-router.get("/expense/:id/edit", expenseController.edit);
-router.put("/expense/:id/update", expenseController.update, expenseController.redirectView);
+router.get("/expense/:id/edit", checkLoginStatus, expenseController.edit);
+router.put("/expense/:id/update", checkLoginStatus, expenseController.update, expenseController.redirectView);
 
 module.exports = router;
 

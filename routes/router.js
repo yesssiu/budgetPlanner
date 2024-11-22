@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const expenseController = require("../controllers/expenseController");
+const incomeController = require("../controllers/incomeController");
 
 //Middleware to check if user is logged in (for accessing certain pages)
 const checkLoginStatus = (req, res, next) => {

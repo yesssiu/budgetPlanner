@@ -25,7 +25,6 @@ router.get("/", (req, res) => {
   res.render("index", { title: 'Home' });
 });
 
-<<<<<<< HEAD
 // Error Page Route
 router.get("/error", (req, res) => {
   res.render("error", { title: 'Error' });
@@ -41,22 +40,13 @@ router.get("/overview", checkLoginStatus, incomeController.overview, expenseCont
   res.render("overview", { title: 'Overview' });
 });
 
-=======
-router.get("/error", (req, res) => { 
-  res.render("error", { title: 'Error' });
-})
->>>>>>> frontti2
 
 // Login routes
 router.get("/login", userController.login);
 router.post("/login", userController.authenticate);
 
 // Logout route
-<<<<<<< HEAD
 router.get("/logout", userController.logout, userController.redirectView);
-=======
-router.get('/users/logout', userController.logout, userController.redirectView);
->>>>>>> frontti2
 
 // Signup routes
 router.get("/signup", userController.signup);

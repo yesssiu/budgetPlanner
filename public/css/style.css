@@ -1,14 +1,13 @@
-/* Yleiset tyylit */
+/* Stylesheet */
 * {
+    color: black;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-<<<<<<< HEAD
 
-/* General Reset */
-body, h1, a {
+
+/* body, h1, a {
     margin: 0;
     padding: 0;
     text-decoration: none;
@@ -16,15 +15,15 @@ body, h1, a {
     font-family: Arial, sans-serif;
   }
   
-  /* Navigation Styles */
+  
   nav {
     display: flex;
-    justify-content: space-between; /* Space between title and items */
-    align-items: center; /* Center items vertically */
+    justify-content: space-between; 
+    align-items: center; 
     padding: 0.5em 1em;
-    background-color: #4CAF50; /* Green background */
+    background-color: #4CAF50;
     color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
   }
   
   .navbar-title h1 {
@@ -35,7 +34,7 @@ body, h1, a {
   .navbar-items {
     display: flex;
     gap: 1em; /* Space between buttons */
-  }
+  /* }
   
   .navbar-items a {
     text-decoration: none;
@@ -44,11 +43,10 @@ body, h1, a {
   
   .button {
     padding: 0.5em 1em;
-    background-color: #388E3C; /* Slightly darker green for buttons */
+    background-color: #388E3C; 
     border-radius: 4px;
-<<<<<<< Updated upstream
-=======
-=======
+  } */
+
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom right, #8e44ad, #3498db);
@@ -179,7 +177,7 @@ header nav a:hover {
     padding: 10px;
     border: none;
     border-radius: 4px;
->>>>>>> frontti2
+
     cursor: pointer;
 }
 
@@ -359,7 +357,6 @@ footer {
 
 .entries-container .edit-btn:hover {
     color: #f1c40f;
-<<<<<<< HEAD
 }
 
 /* General Reset */
@@ -401,7 +398,6 @@ body, h1, a {
     padding: 0.5em 1em;
     background-color: #388E3C; /* Slightly darker green for buttons */
     border-radius: 4px;
->>>>>>> Stashed changes
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
@@ -426,11 +422,8 @@ body, h1, a {
       margin-top: 0.5em;
     }
   }
-<<<<<<< Updated upstream
+
   
-=======
+
   
->>>>>>> Stashed changes
-=======
-}
->>>>>>> frontti2
+

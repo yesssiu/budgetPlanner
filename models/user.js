@@ -51,11 +51,6 @@ userSchema.virtual("fullName").get(function () {
     return `${this.name.first} ${this.name.last}`;
 });
 
-userSchema.virtual("username").get(function () {
-    const firstLetter = this.name.first.charAt(0).toLowerCase();
-    const lastName = this.name.last.slice(0, 7).toLowerCase();
-    return firstLetter + lastName;
-});
 
 userSchema.plugin(passportLocalMongoose, {
     usernameField: "email"

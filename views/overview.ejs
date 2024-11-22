@@ -8,7 +8,7 @@
 <body>
     <h1>Overview</h1>
 
-    <h2>Users Table</h2>
+    <h2>Expense Items</h2>
     <table class="table">
     <thead>
         <tr>
@@ -17,37 +17,31 @@
         <th>Category</th>
         <th>Description</th>
         <th>Date</th>
-        <th>Income</th>
-        <th>Expense</th>
         </tr>
     </thead>
     <tbody>
+        <% expenseItems.forEach(expenseItem => { %>
         <tr>
-        <td>
-            <p>xxxx</p>
-        </td>
-        <td>
-            <p>xxxx</p>
-        </td>
-        <td>
-            <p>xxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            <p>xxxxx</p>
-        </td>
-        <td>
-            xxxx
-        </td>      
+            <td>
+                <%= expenseItem.title %>
+            </td>
+            <td>
+                <%= expenseItem.amount %>
+            </td>
+            <td>
+                <%= expenseItem.category %>
+            </td>
+            <td>
+                <%= expenseItem.description %>
+            </td>
+            <td>
+                <%= expenseItem.date %>
+            </td>
+            <td>
+                <p>Edit</p>
+            </td>   
         </tr>
+        <% }); %>
     </tbody>
     </table>
 

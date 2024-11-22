@@ -267,6 +267,11 @@ footer {
 
 /* Add-page table styling */
 .entries-container {
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
     margin-top: 40px;
 }
 
@@ -276,10 +281,11 @@ footer {
 }
 
 .entries-container table {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     border-collapse: collapse;
     color: #fff;
+    table-layout: auto;
 }
 
 .entries-container th, .entries-container td {

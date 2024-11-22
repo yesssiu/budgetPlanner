@@ -1,0 +1,64 @@
+<section id="add">
+    <!-- Add Income and Expense Section -->
+    <div class="add-container">
+        <h1>Add Income or Expense</h1>
+        
+        <div class="add-forms">
+            <div class="add-income">
+                <h2>Add Income:</h2>
+                <form id="add-income-form" action="/new/income" method="POST">
+                    <input type="text" name="item" placeholder="Item" required />
+                    <input type="number" name="amount" placeholder="Amount (€)" required />
+                    <input type="text" name="category" placeholder="Category" required />
+                    <button type="submit">+</button>
+                </form>
+            </div>
+
+            <div class="add-expense">
+                <h2>Add Expense:</h2>
+                <form id="add-expense-form" action="/nwe/expense" method="POST">
+                    <input type="text" name="item" placeholder="Item" required />
+                    <input type="number" name="amount" placeholder="Amount (€)" required />
+                    <input type="text" name="category" placeholder="Category" required />
+                    <button type="submit">+</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Existing Entries Section -->
+    <div class="entries-container">
+        <h2>Current Entries:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Placeholder for dynamic data -->
+                <tr>
+                    <td>Grocery</td>
+                    <td class="expense">-175 €</td>
+                    <td>Food</td>
+                    <td>
+                        <button class="edit-btn">✏️</button>
+                        <button class="delete-btn">🗑️</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Salary</td>
+                    <td class="income">+3592 €</td>
+                    <td>Income</td>
+                    <td>
+                        <button class="edit-btn">✏️</button>
+                        <button class="delete-btn">🗑️</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>

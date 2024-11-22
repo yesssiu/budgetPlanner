@@ -32,5 +32,10 @@ router.get('/faq', (req, res) => {
     res.render('help', { title: 'FAQ & Chat' });
 });
 
+// Add income and expense route
+router.get('/add', (req, res) => {
+  res.render('budget/new', { title: 'Add Income & Expenses' });
+});
+
 module.exports = router;
 

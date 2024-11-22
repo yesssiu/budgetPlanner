@@ -9,11 +9,11 @@ const incomeController = require("../controllers/incomeController");
 //Middleware to check if user is logged in (for accessing certain pages)
 const checkLoginStatus = (req, res, next) => {
   if (req.isAuthenticated()) {
-    res.locals.user = req.user;
-    next();
+      res.locals.user = req.user;
+      return next();
   }
   req.flash("error", "You must be logged in to access this page.");
-  res.redirect("/");
+  return res.redirect("/login");
 };
 
 module.exports = {

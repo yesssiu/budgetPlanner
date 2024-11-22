@@ -4,6 +4,7 @@ const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
 const expenseController = require("../controllers/expenseController");
+const incomeController = require("../controllers/incomeController");
 
 // Home Route
 router.get("/", (req, res) => {
@@ -25,7 +26,6 @@ router.get("/overview", (req, res) => {
   res.render("overview", { title: 'Overview' });
 });
 
-
 // Login routes
 router.get("/login", userController.login);
 router.post("/login", userController.authenticate);
@@ -40,13 +40,17 @@ router.post("/signup", userController.validate, userController.create, userContr
 // Update user information 
 router.get("/:id/update", userController.update);
 
-//Add expense routes
+//Add & Edit expense routes
 router.get("/expense/new", expenseController.new)
 router.post("/expense/new", expenseController.create, expenseController.redirectView);
-
-//Edit expense routes
 router.get("/expense/:id/edit", expenseController.edit);
 router.put("/expense/:id/update", expenseController.update, expenseController.redirectView);
+
+//Add & Edit income routes
+router.get("/income/new", incomeController.new)
+router.post("/income/new", incomeController.create, incomeController.redirectView);
+router.get("/income/:id/edit", incomeController.edit);
+router.put("/income/:id/update", incomeController.update, incomeController.redirectView);
 
 module.exports = router;
 

@@ -57,7 +57,11 @@ module.exports = {
     },
 
     signup: (req, res) => {
+<<<<<<< HEAD
         res.render("user/signup");
+=======
+        res.render("user/signup", { title: 'Sign up' });
+>>>>>>> frontti2
     },
 
     validate: [
@@ -90,12 +94,20 @@ module.exports = {
         User.register(newUser, req.body.password, (e, user) => {
             if (user) {
                 req.flash("success", `${user.fullName}'s account created successfully!`);
+<<<<<<< HEAD
                 res.locals.redirect = "/overview";
                 next();
             } else {
                 req.flash("error", `Failed to create user account because: ${e.message}.`);
                 console.log(`Failed to create user account because: ${e.message}.`);
                 res.locals.redirect = "/signup";
+=======
+                res.locals.redirect = "/user";
+                next();
+            } else {
+                req.flash("error", `Failed to create user account because: ${e.message}.`);
+                res.locals.redirect = "/user/new";
+>>>>>>> frontti2
                 next();
             }
         });

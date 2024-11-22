@@ -25,6 +25,7 @@ router.get("/", (req, res) => {
   res.render("index", { title: 'Home' });
 });
 
+<<<<<<< HEAD
 // Error Page Route
 router.get("/error", (req, res) => {
   res.render("error", { title: 'Error' });
@@ -40,20 +41,39 @@ router.get("/overview", checkLoginStatus, incomeController.overview, expenseCont
   res.render("overview", { title: 'Overview' });
 });
 
+=======
+router.get("/error", (req, res) => { 
+  res.render("error", { title: 'Error' });
+})
+>>>>>>> frontti2
 
 // Login routes
 router.get("/login", userController.login);
 router.post("/login", userController.authenticate);
 
 // Logout route
+<<<<<<< HEAD
 router.get("/logout", userController.logout, userController.redirectView);
+=======
+router.get('/users/logout', userController.logout, userController.redirectView);
+>>>>>>> frontti2
 
 // Signup routes
 router.get("/signup", userController.signup);
 router.post("/signup", userController.validate, userController.create, userController.redirectView);
 
-// Update user information 
-router.get("/:id/update", userController.update);
+// Update user information
+router.get('/:id/update', userController.update);
+
+// FAQ route
+router.get('/faq', (req, res) => {
+    res.render('help', { title: 'FAQ & Chat' });
+});
+
+// Add income and expense route
+router.get('/add', (req, res) => {
+  res.render('budget/new', { title: 'Add Income & Expenses' });
+});
 
 //Add & Edit expense routes
 router.get("/expense/new", expenseController.new)
@@ -81,20 +101,3 @@ router.put("/income/:id/update", incomeController.update, incomeController.redir
 
 module.exports = router;
 
-//Not needed for Express?
-// exports.handle = (req, res) => {
-//   try {
-//     routes[req.method][req.url](req, res);
-//   } catch (e) {
-//     res.writeHead(httpStatus.OK, contentTypes.html);
-//     utils.getFile("views/error.html", res);
-//   }
-// };
-
-// exports.get = (url, action) => {
-//   routes["GET"][url] = action;
-// };
-
-// exports.post = (url, action) => {
-//   routes["POST"][url] = action;
-// };

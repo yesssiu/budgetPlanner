@@ -15,7 +15,6 @@ const express = require("express"),
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-app.set("layout", "layout");
 
 // Middleware setup
 app.use(express.static(path.join(__dirname, "public")));

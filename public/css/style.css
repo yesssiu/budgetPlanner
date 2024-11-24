@@ -247,18 +247,19 @@ footer {
     display: flex;
     justify-content: center;
     margin-bottom: 40px;
+    background: none;
 }
 
 .add-income, .add-expense {
     background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
     width: 100%;
     max-width: 600px;
 }
 
 .add-income h2, .add-expense h2 {
-    margin-bottom: 10px;
+    margin-bottom: 25px;
     font-size: 1.8rem;
 }
 

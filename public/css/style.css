@@ -6,47 +6,6 @@
 }
 
 
-
-/* body, h1, a {
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
-    color: inherit;
-    font-family: Arial, sans-serif;
-  }
-  
-  
-  nav {
-    display: flex;
-    justify-content: space-between; 
-    align-items: center; 
-    padding: 0.5em 1em;
-    background-color: #4CAF50;
-    color: white;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
-  }
-  
-  .navbar-title h1 {
-    font-size: 1.5em;
-    font-weight: bold;
-  }
-  
-  .navbar-items {
-    display: flex;
-    gap: 1em; /* Space between buttons */
-  /* }
-  
-  .navbar-items a {
-    text-decoration: none;
-    color: white;
-  }
-  
-  .button {
-    padding: 0.5em 1em;
-    background-color: #388E3C; 
-    border-radius: 4px;
-  } */
-
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(to bottom right, #8e44ad, #3498db);
@@ -70,7 +29,7 @@ main {
 /* Header-tyylit */
 header {
     background-color: #2c3e50;
-    padding: 2px;
+    padding: 0 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -82,9 +41,10 @@ header .logo a {
     text-decoration: none;
 }
 .logo img{
-    width: 100px;
-    height: 100px;
+    width: 90px;
+    height: 90px;
 }
+
 
 header nav a {
     margin: 0 10px;
@@ -342,9 +302,4 @@ footer {
 .entries-container .edit-btn:hover {
     color: #f1c40f;
 }
-
-
-  
-
-  
 

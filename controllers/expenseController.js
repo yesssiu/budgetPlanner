@@ -7,15 +7,13 @@ const getItemParams = body => {
         category: body.category,
         description: body.description,
         date: body.date,
-        user: body.user,
-        income: body.income,
-        expense: body.expense
+        user: body.user
     };
 };
 
 module.exports = {
     overview: (req, res, next ) => {
-        ExpenseItem.find()
+        ExpenseItem.find({ user: req.user._id })
         .then(expenseItems => {
             res.locals.expenseItems = expenseItems;
             next();

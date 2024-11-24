@@ -8,14 +8,12 @@ const getItemParams = body => {
         description: body.description,
         date: body.date,
         user: body.user,
-        income: body.income,
-        expense: body.expense
     };
 };
 
 module.exports = {
     overview: (req, res, next ) => {
-        IncomeItem.find()
+        IncomeItem.find({ user: req.user._id})
         .then(incomeItems => {
             res.locals.incomeItems = incomeItems;
             next();

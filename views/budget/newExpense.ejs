@@ -2,16 +2,40 @@
   <form action="/expense/new" method="POST">
     <div class="add-expense">
       <h2>Add a new Expense</h2>
-        <input type="text" name="expense" id="expense" placeholder="Expense" autofocus required />
-        <br />
-        <input type="number" name="amount" id="amount" placeholder="Amount €" required />
-        <br />
-        <input type="category" name="category" id="category" placeholder="Category" required />
-        <br />
-        <input type="description" name="description" id="description" placeholder="Description" />
-        <br />
-        <input type="date" name="date" id="date" required />
-        <br /><br />
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title"
+        autofocus
+        required
+      />
+      <br />
+      <input
+        type="number"
+        name="amount"
+        id="amount"
+        placeholder="Amount €"
+        required
+      />
+      <br />
+      <input
+        type="category"
+        name="category"
+        id="category"
+        placeholder="Category"
+        required
+      />
+      <br />
+      <input
+        type="description"
+        name="description"
+        id="description"
+        placeholder="Description"
+      />
+      <br />
+      <input type="date" name="date" id="date" required />
+      <br /><br />
 
       <button type="submit">Add Expense</button>
     </div>

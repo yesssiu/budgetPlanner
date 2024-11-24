@@ -15,7 +15,7 @@ const getUserParams = body => {
 
 module.exports = {
     login: (req, res) => {
-        res.render("user/login");
+        res.render("/login");
     },
 
     authenticate: (req, res, next) => {

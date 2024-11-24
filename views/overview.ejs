@@ -8,6 +8,9 @@
   <body>
     <h1>Overview</h1>
 
+    <button><a href="/income/new">Add new Income item</a></button>
+    <button><a href="/expense/new">Add new Expense item</a></button>
+
     <h2>Expense Items</h2>
     <table class="table">
       <thead>
@@ -26,10 +29,8 @@
           <td><%= expenseItem.amount %></td>
           <td><%= expenseItem.category %></td>
           <td><%= expenseItem.description %></td>
-          <td><%= expenseItem.date %></td>
-          <td>
-            <p>Edit</p>
-          </td>
+          <td><%= expenseItem.date.toDateString() %></td>
+          <td><a href="/expense/<%= expenseItem._id %>/edit">Edit</a></td>
         </tr>
         <% }); %>
       </tbody>
@@ -53,10 +54,8 @@
           <td><%= incomeItem.amount %></td>
           <td><%= incomeItem.category %></td>
           <td><%= incomeItem.description %></td>
-          <td><%= incomeItem.date %></td>
-          <td>
-            <p>Edit</p>
-          </td>
+          <td><%= incomeItem.date.toDateString() %></td>
+          <td><a href="/income/<%= incomeItem._id %>/edit">Edit</a></td>
         </tr>
         <% }); %>
       </tbody>

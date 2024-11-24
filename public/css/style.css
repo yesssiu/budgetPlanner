@@ -291,6 +291,12 @@ footer {
     border-radius: 8px;
     padding: 20px;
     margin: 0 20px;
+    max-width: 900px;
+}
+
+.budgetItemTable button {
+    font-size: 11px;
+    margin: 2px;
 }
 
 

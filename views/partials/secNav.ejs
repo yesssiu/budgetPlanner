@@ -1,4 +1,41 @@
+<!--En tiedä miltä tää näyttää kirjautuneena, joten jätin alkuperäisen koodin
+vielä tähän tiedostoon roikkumaan, näytti ihan ok:lta niillä sivuilla joita näin-->
+
 <link rel="stylesheet" href="/css/style.css" />
+
+<div id="nav">
+  <div class="navbar-title">
+    <h1 id="title"><a href="/index">BudgetBuddy</a></h1>
+  </div>
+  <div class="navbar-item">
+    <% if (loggedIn) { %> 
+      <span>Logged in as</span>
+      <a href="<%= `/user/${currentUser._id}` %>">
+        <span class="button"> ➥ <%= currentUser.fullName %></span>
+      <a href="/index">
+        <span class="button">Home</span>
+      </a>
+      <a href="/overview">
+        <span class="button">Overview</span>
+      </a>
+      <a href="/logout">
+        <span class="button">Log Out</span>
+      </a>
+    <% } else { %>
+      <a href="/login">
+        <span class="button">Log In</span>
+      </a>
+      <a href="/signup">
+        <span class="button">Sign Up</span>
+      </a>
+    <% } %>
+    <a href="/help">
+      <span class="button">Help</span>
+    </a>
+  </div>
+</div>
+
+<!--<link rel="stylesheet" href="/css/style.css" />
 
 <div id="nav">
   <div class="navbar-title">
@@ -15,7 +52,6 @@
       <span class="button">Help</span>
     </a>
 
-    <!-- Login status on navbar -->
     <% if (loggedIn) { %> Logged in as
     <a href="<%=`/user/${currentUser._id}`%>"> ➥ <%= currentUser.fullName %></a>
     <%} else {%>
@@ -24,3 +60,4 @@
     <a href="/signup">Sign Up</a> <% } %>
   </div>
 </div>
+-->

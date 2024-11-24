@@ -1,22 +1,19 @@
 <div class="data-form">
   <form action="/expense/new" method="POST">
-    <h2>Add a new Expense</h2>
-    <label for="title">Title</label>
-    <input type="text" name="title" id="title" placeholder="First" autofocus />
-    <br />
-    <label for="amount">Amount</label>
-    <input type="text" name="amount" id="amount" placeholder="Last" />
-    <br />
-    <label for="category">Category</label>
-    <input type="category" name="category" id="category" required />
-    <br />
-    <label for="description">Description</label>
-    <input type="description" name="description" id="description" required />
-    <br />
-    <label for="date">Date</label>
-    <input type="date" name="date" id="date" required />
-    <br /><br />
+    <div class="add-expense">
+      <h2>Add a new Expense</h2>
+        <input type="text" name="expense" id="expense" placeholder="Expense" autofocus required />
+        <br />
+        <input type="number" name="amount" id="amount" placeholder="Amount €" required />
+        <br />
+        <input type="category" name="category" id="category" placeholder="Category" required />
+        <br />
+        <input type="description" name="description" id="description" placeholder="Description" />
+        <br />
+        <input type="date" name="date" id="date" required />
+        <br /><br />
 
-    <button type="submit">Add Expense</button>
+      <button type="submit">Add Expense</button>
+    </div>
   </form>
 </div>

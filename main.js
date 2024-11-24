@@ -45,6 +45,10 @@ app.use((req, res, next) => {
 // Passport initialization
 app.use(passport.initialize());
 app.use(passport.session());
+app.use((req, res, next) => {
+  res.locals.loggedIn = !!req.user; 
+  next();
+});
 
 const User = require("./models/user");
 passport.use(User.createStrategy());

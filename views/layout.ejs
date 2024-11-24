@@ -1,101 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= typeof title !== 'undefined' ? title : 'Budget Buddy' %></title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script>
-        // Smooth scrolling for "Log in" button
-        document.addEventListener("DOMContentLoaded", () => {
-            const loginButton = document.querySelector("a[href='#login-section']");
-            if (loginButton) {
-                loginButton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    document.querySelector("#login-section").scrollIntoView({
-                        behavior: "smooth"
-                    });
-                });
+      // Smooth scrolling for "Log in" button
+      document.addEventListener("DOMContentLoaded", () => {
+        // const loginButton = document.querySelector("a[href='#login-section']");
+        // if (loginButton) {
+        //   loginButton.addEventListener("click", (e) => {
+        //     e.preventDefault();
+        //     document.querySelector("#login-section").scrollIntoView({
+        //       behavior: "smooth",
+        //     });
+        //   });
+        // }
+
+        // Chat functionality
+        const chatForm = document.getElementById("chat-form");
+        const chatInput = document.getElementById("chat-input");
+        const chatBox = document.getElementById("chat-box");
+
+        // Retrieve stored messages
+        let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
+
+        // Display messages in chat box
+        function displayMessages() {
+          chatBox.innerHTML = "";
+          messages.forEach((message) => {
+            const messageElement = document.createElement("p");
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+          });
+          chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+        }
+
+        // Add a new message
+        if (chatForm) {
+          chatForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (message) {
+              messages.push(message);
+              localStorage.setItem("chatMessages", JSON.stringify(messages));
+              displayMessages();
+              chatInput.value = ""; // Clear input
             }
+          });
+        }
 
-            // Chat functionality
-            const chatForm = document.getElementById("chat-form");
-            const chatInput = document.getElementById("chat-input");
-            const chatBox = document.getElementById("chat-box");
-
-            // Retrieve stored messages
-            let messages = JSON.parse(localStorage.getItem("chatMessages")) || [];
-
-            // Display messages in chat box
-            function displayMessages() {
-                chatBox.innerHTML = "";
-                messages.forEach((message) => {
-                    const messageElement = document.createElement("p");
-                    messageElement.textContent = message;
-                    chatBox.appendChild(messageElement);
-                });
-                chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
-            }
-
-            // Add a new message
-            if (chatForm) {
-                chatForm.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    const message = chatInput.value.trim();
-                    if (message) {
-                        messages.push(message);
-                        localStorage.setItem("chatMessages", JSON.stringify(messages));
-                        displayMessages();
-                        chatInput.value = ""; // Clear input
-                    }
-                });
-            }
-
-            // Load messages on page load
-            if (chatBox) {
-                displayMessages();
-            }
-        });
+        // Load messages on page load
+        if (chatBox) {
+          displayMessages();
+        }
+      });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="logo">
-            <a href="/"><img src="/images/logo.png" /></a>
-        </div>
+      <div class="logo">
+        <a href="/"><img src="/images/logo.png" /></a>
+      </div>
 
-        <% if (loggedIn) { %>
-            <!-- Secondary navigation -->
-            <nav>
-                <a href="/overview">Overview</a>
-                <a href="/faq">Help</a>
-                <a href="/logout">Log Out</a>
-            </nav>
-        <% } else { %>
-            <!-- Index navigation -->
-            <nav>
-                <a href="/#login-section">Log in</a>
-                <a href="/signup">Sign up</a>
-                <a href="/faq">Help</a>
-            </nav>
-        <% } %>
+      <% if (loggedIn) { %>
+      <!-- Secondary navigation -->
+      <nav>
+        <a href="/overview">Overview</a>
+        <a href="/faq">Help</a>
+        <a href="/logout">Log Out</a>
+      </nav>
+      <% } else { %>
+      <!-- Index navigation -->
+      <nav>
+        <a href="/login">Log in</a>
+        <a href="/signup">Sign up</a>
+        <a href="/faq">Help</a>
+      </nav>
+      <% } %>
     </header>
 
     <main>
-        <div class="flashes">
-            <% if (flashMessages) { %> <% if (flashMessages.success) { %>
-            <div class="flash success"><%= flashMessages.success %></div>
-            <% } else if (flashMessages.error) { %>
-            <div class="flash error"><%= flashMessages.error %></div>
-            <% } %> <% } %>
-        </div>
-        <%- body %> <!-- Yksittäisten sivujen sisältö -->
+      <div class="flashes">
+        <% if (flashMessages) { %> <% if (flashMessages.success) { %>
+        <div class="flash success"><%= flashMessages.success %></div>
+        <% } else if (flashMessages.error) { %>
+        <div class="flash error"><%= flashMessages.error %></div>
+        <% } %> <% } %>
+      </div>
+      <%- body %>
+      <!-- Yksittäisten sivujen sisältö -->
     </main>
 
     <footer>
-        <p>&copy; Budget Buddy 2024</p>
+      <p>&copy; Budget Buddy 2024</p>
     </footer>
-</body>
+  </body>
 </html>

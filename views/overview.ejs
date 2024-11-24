@@ -6,14 +6,13 @@
     <title>Overview</title>
   </head>
   <body>
-
     <section id="budgetOverview">
       <h1>Overview</h1>
 
       <button><a href="/income/new">New Income</a></button>
       <button><a href="/expense/new">New Expense</a></button>
-      <br>
-      <br>
+      <br />
+      <br />
       <div class="budgetItemTable">
         <h2>Expenses</h2>
         <table class="table">
@@ -35,14 +34,22 @@
               <td><%= expenseItem.description %></td>
               <td><%= expenseItem.date.toDateString() %></td>
               <td><a href="/expense/<%= expenseItem._id %>/edit">Edit</a></td>
+              <td>
+                <a
+                  href="<%=`expense/${expenseItem._id}/delete?_method=DELETE`%>"
+                  onclick="return confirm('Are you sure you want to delete this expense?')"
+                  a
+                  >Delete</a
+                >
+              </td>
             </tr>
             <% }); %>
           </tbody>
         </table>
       </div>
-      
-      <br>
-      <br>
+
+      <br />
+      <br />
       <div class="budgetItemTable">
         <h2>Incomes</h2>
         <table class="table">
@@ -64,14 +71,19 @@
               <td><%= incomeItem.description %></td>
               <td><%= incomeItem.date.toDateString() %></td>
               <td><a href="/income/<%= incomeItem._id %>/edit">Edit</a></td>
+              <td>
+                <a
+                  href="<%=`income/${incomeItem._id}/delete?_method=DELETE`%>"
+                  onclick="return confirm('Are you sure you want to delete this income?')"
+                  a
+                  >Delete</a
+                >
+              </td>
             </tr>
             <% }); %>
           </tbody>
         </table>
       </div>
-      
     </section>
-
-    
   </body>
 </html>

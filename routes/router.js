@@ -52,11 +52,13 @@ router.get("/expense/new", checkLoginStatus, expenseController.new);
 router.post("/expense/new", checkLoginStatus, expenseController.create, expenseController.redirectView);
 router.get("/expense/:id/edit", checkLoginStatus, expenseController.edit);
 router.put("/expense/:id/update", checkLoginStatus, expenseController.update, expenseController.redirectView);
+router.delete("/expense/:id/delete", checkLoginStatus, expenseController.delete, expenseController.redirectView);
 
 // Add income routes
 router.get("/income/new", checkLoginStatus, incomeController.new);
 router.post("/income/new", checkLoginStatus, incomeController.create, incomeController.redirectView);
 router.get("/income/:id/edit", checkLoginStatus, incomeController.edit);
 router.put("/income/:id/update", checkLoginStatus, incomeController.update, incomeController.redirectView);
+router.delete("/income/:id/delete", checkLoginStatus, incomeController.delete, incomeController.redirectView);
 
 module.exports = router;

@@ -83,6 +83,8 @@ module.exports = {
     },
 
     delete: (req, res, next) => {
+        console.log("Request body:", req.body);
+        console.log("Request params:", req.params);
         let itemId = req.params.id;
         IncomeItem.findByIdAndRemove(itemId)
             .then(() => {

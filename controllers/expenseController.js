@@ -85,6 +85,8 @@ module.exports = {
 
     delete: (req, res, next) => {
         let itemId = req.params.id;
+        console.log("Request body:", req.body);
+        console.log("Request params:", req.params);
         ExpenseItem.findByIdAndRemove(itemId)
             .then(() => {
                 res.locals.redirect = "/overview";

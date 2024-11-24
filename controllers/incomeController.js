@@ -64,10 +64,13 @@ module.exports = {
     },
 
     update: (req, res, next) => {
+        console.log("Request body:", req.body);
+        console.log("Request params:", req.params);
+    
         let itemId = req.params.id,
             itemParams = getItemParams(req.body);
-
-            IncomeItem.findByIdAndUpdate(itemId, { $set: itemParams })
+    
+        IncomeItem.findByIdAndUpdate(itemId, { $set: itemParams })
             .then(item => {
                 res.locals.item = item;
                 res.locals.redirect = "/overview";

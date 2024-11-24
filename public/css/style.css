@@ -74,7 +74,10 @@ header nav a:hover {
 
 section {
     margin: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
 }
+
 
 /* Hero-osio */
 #hero {
@@ -137,7 +140,7 @@ section {
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
     border-radius: 8px;
-    margin-top: 100px;;
+    margin-top: 100px;
     width: 300px;
 }
 
@@ -163,6 +166,15 @@ section {
 #login-section form button:hover {
     background-color: #2980b9;
 }
+
+/* Overview */
+#budgetOverview .budgetItemTable {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+
 /* FAQ ja Chat -sivun tyylit */
 #faq {
     padding: 20px;

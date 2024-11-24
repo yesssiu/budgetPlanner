@@ -12,17 +12,18 @@ const getItemParams = body => {
 };
 
 module.exports = {
-    overview: (req, res, next ) => {
+    overview: (req, res, next) => {
         ExpenseItem.find({ user: req.user._id })
-        .then(expenseItems => {
-            res.locals.expenseItems = expenseItems;
-            next();
-        })
-        .catch(error => {
-            console.log(`Error fetching income items: ${error.message}`);
-            next(error);
-        });
+            .then(expenseItems => {
+                res.locals.expenseItems = expenseItems;
+                next();
+            })
+            .catch(error => {
+                console.log(`Error fetching expense items: ${error.message}`);
+                next(error);
+            });
     },
+
     // New budget item
     new: (req, res, next) => {
         res.render("budget/newExpense");
@@ -53,7 +54,7 @@ module.exports = {
         let itemId = req.params.id;
         ExpenseItem.findById(itemId)
             .then(item => {
-                res.render("budget/edit", {
+                res.render("budget/editExpense", {
                     item: item
                 });
             })
@@ -64,9 +65,12 @@ module.exports = {
     },
 
     update: (req, res, next) => {
+        console.log("Request body:", req.body);
+        console.log("Request params:", req.params);
+    
         let itemId = req.params.id,
             itemParams = getItemParams(req.body);
-
+    
         ExpenseItem.findByIdAndUpdate(itemId, { $set: itemParams })
             .then(item => {
                 res.locals.item = item;

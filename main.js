@@ -1,6 +1,7 @@
 "use strict";
 
 const express = require("express"),
+  methodOverride = require("method-override"),
   app = express(),
   layouts = require("express-ejs-layouts"),
   mongoose = require("mongoose"),
@@ -11,7 +12,6 @@ const express = require("express"),
   passport = require("passport"),
   path = require("path"),
   router = require("./routes/router");
-
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -24,6 +24,7 @@ app.use(
     extended: false
   })
 );
+app.use(methodOverride("_method"));
 app.use(express.json());
 
 // Cookies & Flash messaging
@@ -40,7 +41,7 @@ app.use(connectFlash());
 app.use((req, res, next) => {
   res.locals.flashMessages = req.flash();
   next();
-}); 
+});
 
 // Passport initialization
 app.use(passport.initialize());

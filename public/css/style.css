@@ -78,6 +78,26 @@ section {
     padding: 20px;
 }
 
+button {
+    padding: 10px;
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
 
 /* Hero-osio */
 #hero {
@@ -168,14 +188,6 @@ section {
     background-color: #2980b9;
 }
 
-/* Overview */
-#budgetOverview .budgetItemTable {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    padding: 20px;
-}
-
-
 /* FAQ ja Chat -sivun tyylit */
 #faq {
     padding: 20px;
@@ -241,6 +253,16 @@ footer {
     padding: 20px;
     background-color: #2c3e50;
 }
+
+
+/* Overview */
+#budgetOverview .budgetItemTable {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+}
+
+
 
 /* Add Income and Expense styling */
 .data-form {

@@ -65,11 +65,22 @@
         <div class="logo">
             <a href="/"><img src="/images/logo.png" /></a>
         </div>
-        <nav>
-            <a href="/#login-section">Log in</a> <!-- Scroll to login -->
-            <a href="/signup">Sign up</a> <!-- Go to signup page -->
-            <a href="/faq">Help</a> <!-- Link to FAQ page -->
-        </nav>
+
+        <% if (loggedIn) { %>
+            <!-- Secondary navigation -->
+            <nav>
+                <a href="/overview">Overview</a>
+                <a href="/faq">Help</a>
+                <a href="/logout">Log Out</a>
+            </nav>
+        <% } else { %>
+            <!-- Index navigation -->
+            <nav>
+                <a href="/#login-section">Log in</a>
+                <a href="/signup">Sign up</a>
+                <a href="/faq">Help</a>
+            </nav>
+        <% } %>
     </header>
 
     <main>

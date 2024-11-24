@@ -1,0 +1,53 @@
+<div class="data form">
+  <form method="POST" action="<%=`/expense/${item._id}/update?_method=PUT`%>">
+    <input type="hidden" name="_method" value="PUT" />
+    <div class="add-expense">
+      <h2>Edit Expense</h2>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        placeholder="Title"
+        value="<%= item.title %>"
+        autofocus
+        required
+      />
+      <br />
+      <input
+        type="number"
+        name="amount"
+        id="amount"
+        placeholder="Amount €"
+        value="<%= item.amount %>"
+        required
+      />
+      <br />
+      <input
+        type="text"
+        name="category"
+        id="category"
+        placeholder="Category"
+        value="<%= item.category %>"
+        required
+      />
+      <br />
+      <input
+        type="text"
+        name="description"
+        id="description"
+        placeholder="Description"
+        value="<%= item.description %>"
+      />
+      <br />
+      <input
+        type="date"
+        name="date"
+        id="date"
+        value="<%= item.date.toISOString().split('T')[0] %>"
+        required
+      />
+      <br /><br />
+      <button type="submit">Update Expense</button>
+    </div>
+  </form>
+</div>

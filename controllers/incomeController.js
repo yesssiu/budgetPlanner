@@ -53,7 +53,7 @@ module.exports = {
         let itemId = req.params.id;
         IncomeItem.findById(itemId)
             .then(item => {
-                res.render("budget/edit", {
+                res.render("budget/editIncome", {
                     item: item
                 });
             })

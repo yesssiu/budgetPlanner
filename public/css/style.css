@@ -83,6 +83,7 @@ section {
 #hero {
     display: flex;
     align-items: center;
+    background: none;
 }
 
 #hero div {

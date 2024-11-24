@@ -41,6 +41,34 @@ table th {
     padding: 8px;
 }
 
+
+section {
+    margin: 60px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+}
+
+button {
+    padding: 10px;
+    background-color: #3498db;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+button a {
+    color: white;
+    text-decoration: none;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+
 /* Header-tyylit */
 header {
     background-color: #2c3e50;
@@ -70,32 +98,6 @@ header nav a {
 
 header nav a:hover {
     color: #1abc9c;
-}
-
-section {
-    margin: 60px;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
-}
-
-button {
-    padding: 10px;
-    background-color: #3498db;
-    border: none;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    margin: 0 10px;
-}
-
-button a {
-    color: white;
-    text-decoration: none;
-}
-
-button:hover {
-    background-color: #2980b9;
 }
 
 
@@ -156,37 +158,65 @@ button:hover {
     font-size: 0.9rem;
 }
 
-/* Login-osio */
-#login-section {
+/* Sign Up */
+#signup {
     background: rgba(255, 255, 255, 0.2);
     padding: 20px;
     border-radius: 8px;
     margin-top: 100px;
-    width: 300px;
+    min-width: 300px;
 }
 
-#login-section form input {
-    display: block;
+.signup-form {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px 0;
+    border-radius: 8px;
     width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
 }
 
-#login-section form button {
-    background-color: #3498db;
-    color: white;
+.signup-form h2 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.signup-form input {
     padding: 10px;
+    border-radius: 4px;
     border: none;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+
+/* Login-osio */
+#login {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 100px;
+    width: 350px;
+}
+
+.login-form {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 30px 0;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.login-form h2 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+}
+
+.login-form input {
+    padding: 10px;
     border-radius: 4px;
-
-    cursor: pointer;
+    border: none;
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
-#login-section form button:hover {
-    background-color: #2980b9;
-}
 
 /* FAQ ja Chat -sivun tyylit */
 #faq {

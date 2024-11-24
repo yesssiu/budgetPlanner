@@ -38,7 +38,7 @@ module.exports = {
                 }
                 console.log(`Login successful: ${user.email}`);
                 req.flash("success", "Logged in!");
-                return res.redirect("/");
+                return res.redirect("/overview");
             });
         })(req, res, next);
     },

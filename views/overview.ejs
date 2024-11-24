@@ -6,59 +6,68 @@
     <title>Overview</title>
   </head>
   <body>
-    <h1>Overview</h1>
 
-    <button><a href="/income/new">Add new Income item</a></button>
-    <button><a href="/expense/new">Add new Expense item</a></button>
 
-    <h2>Expense Items</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% expenseItems.forEach(expenseItem => { %>
-        <tr>
-          <td><%= expenseItem.title %></td>
-          <td><%= expenseItem.amount %></td>
-          <td><%= expenseItem.category %></td>
-          <td><%= expenseItem.description %></td>
-          <td><%= expenseItem.date.toDateString() %></td>
-          <td><a href="/expense/<%= expenseItem._id %>/edit">Edit</a></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+    <section id="budgetOvewview">
+      <h1>Overview</h1>
 
-    <h2>Income Items</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Title</th>
-          <th>Amount</th>
-          <th>Category</th>
-          <th>Description</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% incomeItems.forEach(incomeItem => { %>
-        <tr>
-          <td><%= incomeItem.title %></td>
-          <td><%= incomeItem.amount %></td>
-          <td><%= incomeItem.category %></td>
-          <td><%= incomeItem.description %></td>
-          <td><%= incomeItem.date.toDateString() %></td>
-          <td><a href="/income/<%= incomeItem._id %>/edit">Edit</a></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+      <button><a href="/income/new">Add new Income item</a></button>
+      <button><a href="/expense/new">Add new Expense item</a></button>
+      <br>
+      <br>
+      <h2>Expenses</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% expenseItems.forEach(expenseItem => { %>
+          <tr>
+            <td><%= expenseItem.title %></td>
+            <td><%= expenseItem.amount %></td>
+            <td><%= expenseItem.category %></td>
+            <td><%= expenseItem.description %></td>
+            <td><%= expenseItem.date.toDateString() %></td>
+            <td><a href="/expense/<%= expenseItem._id %>/edit">Edit</a></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <br>
+      <br>
+
+      <h2>Incomes</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% incomeItems.forEach(incomeItem => { %>
+          <tr>
+            <td><%= incomeItem.title %></td>
+            <td><%= incomeItem.amount %></td>
+            <td><%= incomeItem.category %></td>
+            <td><%= incomeItem.description %></td>
+            <td><%= incomeItem.date.toDateString() %></td>
+            <td><a href="/income/<%= incomeItem._id %>/edit">Edit</a></td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </section>
+
+    
   </body>
 </html>

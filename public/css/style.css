@@ -41,11 +41,9 @@ table th {
     padding: 8px;
 }
 
-
 section {
-    margin: 60px;
     background: rgba(255, 255, 255, 0.1);
-    padding: 20px;
+    max-width: 100%;
 }
 
 button {
@@ -57,6 +55,7 @@ button {
     font-size: 1.2rem;
     cursor: pointer;
     margin: 0 10px;
+    color: white;
 }
 
 button a {
@@ -83,6 +82,7 @@ header .logo a {
     font-size: 1.5rem;
     text-decoration: none;
 }
+
 .logo img{
     width: 90px;
     height: 90px;
@@ -131,10 +131,10 @@ header nav a:hover {
     padding: 15px;
     cursor: pointer;
 }
+
 #hero div button:hover {
     background-color: rgba(244, 193, 41, 0.89);
 }
-
 
 #hero img {
     height: 550px;
@@ -168,7 +168,7 @@ header nav a:hover {
 
 .signup-form {
     background: rgba(255, 255, 255, 0.2);
-    padding: 30px 0;
+    padding: 30px 0px;
     border-radius: 8px;
     width: 100%;
 }
@@ -185,7 +185,6 @@ header nav a:hover {
     font-size: 1rem;
     margin-bottom: 15px;
 }
-
 
 /* Login-osio */
 #login {
@@ -285,12 +284,11 @@ footer {
 
 
 /* Overview */
-
 #budgetOverview .budgetItemTable {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     padding: 20px;
-    margin: 0 20px;
+    margin: 20px 80px;
     max-width: 900px;
 }
 
@@ -300,7 +298,7 @@ footer {
 }
 
 
-/* Add Income and Expense styling */
+/* Add Income and Expense */
 .data-form {
     display: flex;
     justify-content: center;
@@ -343,54 +341,65 @@ footer {
     background-color: #2980b9;
 }
 
-/* Add-page table styling */
-.entries-container {
-    padding: 20px;
-    text-align: center;
-    color: #fff;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 8px;
-    margin-top: 40px;
-}
 
-.entries-container h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-}
+/* Responsive view */
+@media (max-width: 830px) {
 
-.entries-container table {
-    width: 90%;
-    margin: 0 auto;
-    border-collapse: collapse;
-    color: #fff;
-    table-layout: auto;
-}
+    body {
+        font-size: 14px;
+    }
 
-.entries-container th, .entries-container td {
-    padding: 10px;
-    text-align: center;
-}
+    header {
+        flex-direction: column;
+    }
 
-.entries-container .expense {
-    color: #e74c3c;
-}
+    header nav {
+        margin-top: 10px;
+    }
 
-.entries-container .income {
-    color: #2ecc71;
-}
+    #hero {
+        flex-direction: column;
+    }
 
-.entries-container .edit-btn, .entries-container .delete-btn {
-    border: none;
-    background: none;
-    font-size: 1.2rem;
-    cursor: pointer;
-}
+    #hero img {
+        height: 300px;
+        width: auto;
+    }
+  
+    .table {
+        display: block;
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 10%;
+    }
 
-.entries-container .delete-btn:hover {
-    color: #e74c3c;
-}
+    .table td, .table th {
+        word-wrap: break-word;
+        white-space: normal;
+    }
+    
+    .table td {
+        padding: 0%;
+        gap: 5px;
+        text-align: center;
+    }
 
-.entries-container .edit-btn:hover {
-    color: #f1c40f;
-}
+    .table th:nth-child(4), .table td:nth-child(4),
+    .table th:nth-child(5), .table td:nth-child(5) {
+        display: none;
+    }
 
+    button {
+        font-size: 12px;
+        padding: 7px;
+        margin: 2px
+    }
+
+    .add-income, .add-expense {
+        background: rgba(255, 255, 255, 0.2);
+        margin-top: 10%;
+        padding: 20px 15px;
+        width: 100%;
+        max-width: 600px;
+    }
+}

@@ -86,7 +86,7 @@ module.exports = {
         console.log("Request body:", req.body);
         console.log("Request params:", req.params);
         let itemId = req.params.id;
-        IncomeItem.findByIdAndRemove(itemId)
+        IncomeItem.findByIdAndDelete(itemId)
             .then(() => {
                 res.locals.redirect = "/overview";
                 next();

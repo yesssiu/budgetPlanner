@@ -56,16 +56,17 @@ passport.use(User.createStrategy());
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// Middleware to set current logged in status and current user
+// Middleware to set current logged in status and current user + first name for chat function
 app.use((req, res, next) => {
   res.locals.loggedIn = req.isAuthenticated();
-  res.locals.currentUser = req.user;
+  res.locals.currentUser = req.user ? { _id: req.user._id, firstName: req.user.name.first } : null;
   next();
 });
 
 app.use('/', router);
 
 const port = process.env.PORT || 4000;
+app.set("port", port);
 
 // DB Connection & dotenv configuration
 require('dotenv').config();
@@ -83,9 +84,11 @@ async function connectToAtlas() {
 
 connectToAtlas()
   .then(() => {
-      app.listen(port, () => {
-          console.log(`Server is running on port ${port}`);
+      const server = app.listen(app.get("port"), () => {
+          console.log(`Server running at http://localhost:${app.get("port")}`);
       });
+      const io = require("socket.io")(server);
+      const chatController = require("./controllers/chatController")(io);
   })
   .catch((error) => {
       console.error('Failed to start the server due to MongoDB connection issues:', error);

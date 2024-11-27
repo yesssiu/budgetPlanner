@@ -117,6 +117,25 @@ header nav a:hover {
     color: #1abc9c;
 }
 
+.flash {
+    border: solid black 2px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.success {
+    background-color: forestgreen;
+}
+
+.error {
+    background-color: darkred;
+}
+
+.flashes * {
+    color: whitesmoke;
+    font-size: large;
+}
+
 
 /* Hero-osio */
 #hero {

@@ -45,6 +45,13 @@ table th {
     padding: 8px;
 }
 
+.table th, .table td {
+    width: 150px;
+    max-width: 150px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
 section {
     background: rgba(255, 255, 255, 0.1);
     max-width: 100%;
@@ -69,6 +76,12 @@ button a {
 
 button:hover {
     background-color: #2980b9;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 5px;
 }
 
 

@@ -39,12 +39,13 @@
               <td>
                 <%= new Date(expenseItem.date).toLocaleDateString('fi-FI') %>
               </td>
-              <td>
-                <form action="/expense/<%= expenseItem._id %>/edit">
+              <td class="actions">
+                <form
+                  action="/expense/<%= expenseItem._id %>/edit"
+                  style="display: inline"
+                >
                   <button type="submit">Edit</button>
                 </form>
-              </td>
-              <td>
                 <form
                   action="/expense/<%= expenseItem._id %>/delete?_method=DELETE"
                   method="POST"
@@ -92,12 +93,10 @@
               <td>
                 <%= new Date(incomeItem.date).toLocaleDateString('fi-FI') %>
               </td>
-              <td>
+              <td class="actions">
                 <a href="/income/<%= incomeItem._id %>/edit">
                   <button type="submit">Edit</button>
                 </a>
-              </td>
-              <td>
                 <form
                   action="/income/<%= incomeItem._id %>/delete?_method=DELETE"
                   method="POST"

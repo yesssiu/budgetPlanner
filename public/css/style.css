@@ -420,6 +420,14 @@ footer p {
         text-align: center;
     }
 
+    /* Smaller tables for mobile view */
+    .table th, .table td {
+        width: 80px;
+        max-width: 80px;
+        word-wrap: break-word;
+        white-space: normal;
+    }
+
     button {
         font-size: 12px;
         padding: 7px;
@@ -432,5 +440,9 @@ footer p {
         padding: 20px 15px;
         width: 100%;
         max-width: 600px;
+    }
+
+    .actions {
+        gap: 2px; /* Smaller gap for mobile view */
     }
 }

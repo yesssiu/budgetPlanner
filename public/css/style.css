@@ -384,6 +384,10 @@ footer p {
         padding: 1px;
     }
 
+    section#budgetOverview {
+        padding: 40px;
+    }
+
     .table {
         display: block;
         overflow-x: auto;

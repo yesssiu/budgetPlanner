@@ -60,7 +60,7 @@ section {
 
 button {
     padding: 10px;
-    background-color: #3498db;
+    background-color: #8d4cd3;
     border: none;
     color: #fff;
     border-radius: 4px;
@@ -76,7 +76,7 @@ button a {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: #6123a3;
 }
 
 .actions {

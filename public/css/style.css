@@ -45,6 +45,7 @@ table th {
     padding: 8px;
 }
 
+/* Consistent table sizes */
 .table th, .table td {
     width: 150px;
     max-width: 150px;

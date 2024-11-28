@@ -1,8 +1,9 @@
 <section id="budgetOverview">
   <h1>Overview</h1>
 
-  <button><a href="/income/new">New Income</a></button>
   <button><a href="/expense/new">New Expense</a></button>
+  <button><a href="/income/new">New Income</a></button>
+
   <br />
   <br />
   <div class="budgetItemTable">
@@ -11,7 +12,7 @@
       <thead>
         <tr>
           <th>Title</th>
-          <th>Amount</th>
+          <th>Amount (€)</th>
           <th>Category</th>
           <!-- <th>Description</th> -->
           <th>Date</th>
@@ -19,39 +20,38 @@
       </thead>
       <tbody>
         <% if (expenseItems.length===0) { %>
-          <tr>
-            <td colspan="6">No expenses recorded yet.</td>
-          </tr>
-          <% } else { %>
-            <% expenseItems.forEach(expenseItem=> { %>
-              <tr>
-                <td>
-                  <%= expenseItem.title %>
-                </td>
-                <td>
-                  <%= expenseItem.amount %>
-                </td>
-                <td>
-                  <%= expenseItem.category %>
-                </td>
-                <!-- <td><%= expenseItem.description %></td> -->
-                <td>
-                  <%= new Date(expenseItem.date).toLocaleDateString('fi-FI') %>
-                </td>
-                <td class="actions">
-                  <form action="/expense/<%= expenseItem._id %>/edit" style="display: inline">
-                    <button type="submit">Edit</button>
-                  </form>
-                  <form action="/expense/<%= expenseItem._id %>/delete?_method=DELETE" method="POST"
-                    style="display: inline">
-                    <button type="submit" onclick="return confirm('Are you sure you want to delete this expense?')">
-                      Delete
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <% }); %>
-                <% } %>
+        <tr>
+          <td colspan="6">No expenses recorded yet.</td>
+        </tr>
+        <% } else { %> <% expenseItems.forEach(expenseItem=> { %>
+        <tr>
+          <td><%= expenseItem.title %></td>
+          <td><%= expenseItem.amount %></td>
+          <td><%= expenseItem.category %></td>
+          <!-- <td><%= expenseItem.description %></td> -->
+          <td><%= new Date(expenseItem.date).toLocaleDateString('fi-FI') %></td>
+          <td class="actions">
+            <form
+              action="/expense/<%= expenseItem._id %>/edit"
+              style="display: inline"
+            >
+              <button type="submit">Edit</button>
+            </form>
+            <form
+              action="/expense/<%= expenseItem._id %>/delete?_method=DELETE"
+              method="POST"
+              style="display: inline"
+            >
+              <button
+                type="submit"
+                onclick="return confirm('Are you sure you want to delete this expense?')"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        <% }); %> <% } %>
       </tbody>
     </table>
   </div>
@@ -72,39 +72,35 @@
       </thead>
       <tbody>
         <% if (incomeItems.length===0) { %>
-          <tr>
-            <td colspan="6">No incomes recorded yet.</td>
-          </tr>
-          <% } else { %>
-            <% incomeItems.forEach(incomeItem=> { %>
-              <tr>
-                <td>
-                  <%= incomeItem.title %>
-                </td>
-                <td>
-                  <%= incomeItem.amount %>
-                </td>
-                <td>
-                  <%= incomeItem.category %>
-                </td>
-                <!-- <td><%= incomeItem.description %></td> -->
-                <td>
-                  <%= new Date(incomeItem.date).toLocaleDateString('fi-FI') %>
-                </td>
-                <td class="actions">
-                  <a href="/income/<%= incomeItem._id %>/edit">
-                    <button type="submit">Edit</button>
-                  </a>
-                  <form action="/income/<%= incomeItem._id %>/delete?_method=DELETE" method="POST"
-                    style="display: inline">
-                    <button type="submit" onclick="return confirm('Are you sure you want to delete this income?')">
-                      Delete
-                    </button>
-                  </form>
-                </td>
-              </tr>
-              <% }); %>
-                <% } %>
+        <tr>
+          <td colspan="6">No incomes recorded yet.</td>
+        </tr>
+        <% } else { %> <% incomeItems.forEach(incomeItem=> { %>
+        <tr>
+          <td><%= incomeItem.title %></td>
+          <td><%= incomeItem.amount %></td>
+          <td><%= incomeItem.category %></td>
+          <!-- <td><%= incomeItem.description %></td> -->
+          <td><%= new Date(incomeItem.date).toLocaleDateString('fi-FI') %></td>
+          <td class="actions">
+            <a href="/income/<%= incomeItem._id %>/edit">
+              <button type="submit">Edit</button>
+            </a>
+            <form
+              action="/income/<%= incomeItem._id %>/delete?_method=DELETE"
+              method="POST"
+              style="display: inline"
+            >
+              <button
+                type="submit"
+                onclick="return confirm('Are you sure you want to delete this income?')"
+              >
+                Delete
+              </button>
+            </form>
+          </td>
+        </tr>
+        <% }); %> <% } %>
       </tbody>
     </table>
   </div>

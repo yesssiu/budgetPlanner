@@ -90,11 +90,11 @@ module.exports = {
         User.register(newUser, req.body.password, (e, user) => {
             if (user) {
                 req.flash("success", `${user.fullName}'s account created successfully!`);
-                res.locals.redirect = "/user";
+                res.locals.redirect = "/login";
                 next();
             } else {
                 req.flash("error", `Failed to create user account because: ${e.message}.`);
-                res.locals.redirect = "/user/new";
+                res.locals.redirect = "/signup";
                 next();
             }
         });
